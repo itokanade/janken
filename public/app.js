@@ -100,23 +100,20 @@ socket.on("join-result", (data)=>{
 /**
  * [イベント] 発言フォームが送信された
  */
-$("#frm-post").addEventListener("submit", (e)=>{
+$("#frm-gu").addEventListener("submit", (e)=>{
   // 規定の送信処理をキャンセル(画面遷移しないなど)
   e.preventDefault();
-
-  // 入力内容を取得する
-  const msg = $("#msg");
-  if( msg.value === "" ){
-    return(false);
-  }
-
   // Socket.ioサーバへ送信
-  socket.emit("post", {text: msg.value, token:IAM.token});
-
-  // 発言フォームを空にする
-  msg.value = "";
+  socket.emit("post", {token:IAM.token});
 });
-
+$("#frm-tyoki").addEventListener("submit",(e)=>{
+  e.preventDefault();
+  socket.emit("post",{token:IAM.token});
+});
+$("#frm-pa").addEventListener("submit",(e)=>{
+  e.preventDefault();
+  socket.emit("post",{token:IAM.token});
+});
 /**
  * [イベント] 退室ボタンが押された
  */
