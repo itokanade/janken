@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <title>じゃんけんゲーム</title>
   <link rel="stylesheet" href="style.css" type="text/css" media="all">
+  <style>
+    #gu{
+       width: 70px;
+       height: 50px;
+    }
+    #tyoki{
+      width: 70px;
+      height: 60px;
+    }
+    #pa{
+      width: 70px;
+      height: 70px;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,7 +44,7 @@
   <!-- 発言フォーム -->
   <form id="frm-gu" autocomplete="off">
     <span id="myname"></span><br>
-    <button>グー</button>
+    <button onclick="gu">グー</button>
   </form>
   <form id="frm-tyoki" autocomplete="off">
     <span id="myname"></span><br>
@@ -54,10 +68,20 @@
   </form>
 </section>
 <!-- /チャット本体 -->
-
+<script type="text/javascript">
+function gu(){
+ <img id="gu" src = "asset/janken_gu.png"/>
+}
+function tyoki(){
+  <img id="tyoki" src = "asset/janken_choki.png"/>
+}
+function pa(){
+  <img id="pa" src = "asset/janken_pa.png"/>
+}
+</script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="util.js"></script>
 <script src="app.js"></script>
-
+<script src="janken.js"></script>
 </body>
 </html>

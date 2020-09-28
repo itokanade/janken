@@ -59,6 +59,8 @@ app.get("/:file", (req, res)=>{
 /**
  * [イベント] ユーザーが接続
  */
+var tmpRoomId;
+var waitPlayer = "0";
 io.on("connection", (socket)=>{
   //---------------------------------
   // トークンを返却
@@ -120,7 +122,21 @@ io.on("connection", (socket)=>{
 
     // トークンが誤っていた場合は無視する
   });
-
+  socket.on("gu",(data)=>{
+    if (authToken(socket.id,data.token) ){
+      io.to(socket.id).emit("rock")
+    }
+  });
+  socket.on("tyoki",(data)=>{
+    if (authToken(socket.id,data.token) ){
+        io.to(socket.id).emit("sceser")
+      }
+    });
+  socket.on("gu",(data)=>{
+    if (authToken(socket.id,data.token) ){
+          io.to(socket.id).emit("paper")
+        }
+  });
   /**
    * [イベント] 退室する
    */

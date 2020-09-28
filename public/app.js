@@ -104,15 +104,15 @@ $("#frm-gu").addEventListener("submit", (e)=>{
   // 規定の送信処理をキャンセル(画面遷移しないなど)
   e.preventDefault();
   // Socket.ioサーバへ送信
-  socket.emit("post", {token:IAM.token});
+  socket.emit("rock", {token:IAM.token});
 });
 $("#frm-tyoki").addEventListener("submit",(e)=>{
   e.preventDefault();
-  socket.emit("post",{token:IAM.token});
+  socket.emit("sceser",{token:IAM.token});
 });
 $("#frm-pa").addEventListener("submit",(e)=>{
   e.preventDefault();
-  socket.emit("post",{token:IAM.token});
+  socket.emit("paper",{token:IAM.token});
 });
 /**
  * [イベント] 退室ボタンが押された
@@ -175,8 +175,15 @@ socket.on("member-post", (msg)=>{
     addMessage(msg, is_me);
   }
 });
-
-
+socket.on("rock",(msg)=>{
+   const player1 = 1;
+})
+socket.on("sceser",(msg)=>{
+  const player1 = 2;
+})
+socket.on("paper",(msg)=>{
+  const player1 = 3;
+})
 /**
  * 最初の状態にもどす
  *
